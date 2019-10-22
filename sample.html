@@ -6,6 +6,35 @@
   <meta name="description" content="SampleHtml">
 </head>
 <body>
+  <script>
+    $(function() {
+      App.init();
+    });
+    var App = {
+      init: function() {
+       this.datetime(), this.side.nav(), this.search.bar(), this.navigation(), this.hyperlinks(), setInterval("App.datetime();", 1e3)
+    },
+    datetime: function() {
+        var e = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"),
+            t = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"),
+            a = new Date,
+            i = a.getYear();
+        1e3 > i && (i += 1900);
+        var s = a.getDay(),
+            n = a.getMonth(),
+            r = a.getDate();
+        10 > r && (r = "0" + r);
+        var l = a.getHours(),
+            c = a.getMinutes(),
+            h = a.getSeconds(),
+            o = "AM";
+        l >= 12 && (o = "PM"), l > 12 && (l -= 12), 0 == l && (l = 12), 9 >= c && (c = "0" + c), 9 >= h && (h = "0" + h), $(".welcome .datetime .day").text(e[s]), $(".welcome .datetime .date").text(t[n] + " " + r + ", " + i), $(".welcome .datetime .time").text(l + ":" + c + ":" + h + " " + o)
+    },
+
+  </script>
+
+
+
   <h1>Twitterウィジェット</h1>
   <p>メモ:どうやらTwitter検索タイムラインウィジェットは廃止されたのでメンションボタンかリスト、個人のツイートしか読み込めないらしい</p>
   <a href="https://twitter.com/intent/tweet?button_hashtag=ヴァイオレットエヴァーガーデン&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-show-count="false">Tweet #ヴァイオレットエヴァーガーデン</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
