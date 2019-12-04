@@ -33,7 +33,7 @@ function test2(position) {
     var mapArea = document.getElementById('maps');
       var mapOptions = {
         center: mapPosition,
-        zoom: 10,
+        zoom: 16,
       };
     var map = new google.maps.Map(mapArea, mapOptions);
 
