@@ -1,17 +1,17 @@
-var geocoder;
+var map;
+var marker;
+var center = {
+  lat: 35.780840, // 緯度
+  lng: 139.715757 // 経度
+};
 function initMap() {
-    geocoder = new google.maps.Geocoder();
-  geocoder.geocode({
-      'address': '東京都千代田区神田小川町3-28-9' // TAM 東京
-   }, function(results, status) { // 結果
-        if (status === google.maps.GeocoderStatus.OK) { // ステータスがOKの場合
-          console.group('Success');
-         console.log(results);
-           console.log(status);
-        } else { // 失敗した場合
-          console.group('Error');
-           console.log(results);
-           console.log(status);
-        }
+ map = new google.maps.Map(document.getElementById('maps'), { // #sampleに地図を埋め込む
+     center: center, // 地図の中心を指定
+     zoom: 19 // 地図のズームを指定
+   });
+ 
+ marker = new google.maps.Marker({ // マーカーの追加
+      position: center, // マーカーを立てる位置を指定
+      map: map // マーカーを立てる地図を指定
    });
 }
