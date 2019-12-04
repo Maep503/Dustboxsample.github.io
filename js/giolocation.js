@@ -28,8 +28,7 @@ function test2(position) {
   
     var geo_ido = position.coords.latitude;
     var geo_keido = position.coords.longitude;
-    //var date = new Date(position.timestamp);
-    //var geo1_text += "取得時刻:" + date.toLocaleString() + "\n";
+    var date = new Date(position.timestamp);
 
     var mapArea = document.getElementById('maps');
       var mapOptions = {
@@ -38,7 +37,7 @@ function test2(position) {
       };
     var map = new google.maps.Map(mapArea, mapOptions);
 
-    
+
     var mapPosition = {lat: geo_ido, lng: geo_keido};
   
 
@@ -47,7 +46,7 @@ function test2(position) {
       position: mapPosition,
     };
     var marker = new google.maps.Marker(markerOptions);
-    var alerttext = "ゴミ箱のピンをうちました";
+    var alerttext = "取得時刻:" + date.toLocaleString() + "にゴミ箱のピンをうちました"+"\n";
     alert(alerttext);
 
   }
