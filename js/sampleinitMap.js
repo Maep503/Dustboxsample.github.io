@@ -18,7 +18,7 @@ function initMap() {
 
 function pin() {
   //navigator.geolocation.getCurrentPosition(pin2);
-  var date = new Date(position.timestamp);
+  /*var date = new Date(position.timestamp);
   var alerttext = "取得時刻:" + date.toLocaleString() +"\n";
   
   map = new google.maps.Map(document.getElementById('maps'), { // #sampleに地図を埋め込む
@@ -29,7 +29,7 @@ function pin() {
   marker = new google.maps.Marker({ // マーカーの追加
      position: center, // マーカーを立てる位置を指定
      map: map // マーカーを立てる地図を指定
-  });
+  });*/
   alert(alerttext);
 }
 
