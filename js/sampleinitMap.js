@@ -19,7 +19,7 @@ function initMap() {
 function pin() {
   //navigator.geolocation.getCurrentPosition(pin2);
   var date = new Date(position.timestamp);
-  var alerttext = "取得時刻:" + date.toLocaleString() + "にゴミ箱のピンをうちました"+"\n";
+  var alerttext = "取得時刻:" + date.toLocaleString() +"\n";
   alert(alerttext);
 }
 
