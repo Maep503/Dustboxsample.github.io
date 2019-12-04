@@ -30,10 +30,10 @@ function initMap() {
   marker = new google.maps.Marker({ // マーカーの追加
      position: center, // マーカーを立てる位置を指定
      map: map // マーカーを立てる地図を指定
-  });*/
+  });
 }
 
-/*function pin2(position) {
+function pin2(position) {
 
   var geo_ido = position.coords.latitude;
   var geo_keido = position.coords.longitude;
