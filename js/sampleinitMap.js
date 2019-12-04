@@ -18,10 +18,10 @@ function initMap() {
 
 function pin() {
   //navigator.geolocation.getCurrentPosition(pin2);
-  /*var date = new Date(position.timestamp);
+  var date = new Date(position.timestamp);
   var alerttext = "取得時刻:" + date.toLocaleString() +"\n";
   
-  map = new google.maps.Map(document.getElementById('maps'), { // #sampleに地図を埋め込む
+  /*map = new google.maps.Map(document.getElementById('maps'), { // #sampleに地図を埋め込む
     center: center, // 地図の中心を指定
     zoom: 19 // 地図のズームを指定
   });
