@@ -7,7 +7,7 @@ var center = {
 function initMap() {
  map = new google.maps.Map(document.getElementById('maps'), { // #sampleに地図を埋め込む
      center: center, // 地図の中心を指定
-     zoom: 10 // 地図のズームを指定
+     zoom: 16 // 地図のズームを指定
    });
  
  marker = new google.maps.Marker({ // マーカーの追加
