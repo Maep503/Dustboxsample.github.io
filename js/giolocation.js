@@ -19,3 +19,26 @@ function test2(position) {
   alert(geo_text);
 
   }
+
+  function pin() {
+    navigator.geolocation.getCurrentPosition(pin2);
+  }
+  
+  function pin2(position) {
+  
+    var geo_ido = position.coords.latitude;
+    var geo_keido = position.coords.longitude;
+    //var date = new Date(position.timestamp);
+    //var geo1_text += "取得時刻:" + date.toLocaleString() + "\n";
+
+    var mapPosition = {lat: geo_ido, lng: geo_keido};
+  
+
+    var markerOptions = {
+      map: map,
+      position: mapPosition,
+    };
+    var marker = new google.maps.Marker(markerOptions);
+
+  }
+  
