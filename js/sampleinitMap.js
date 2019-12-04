@@ -17,10 +17,13 @@ function initMap() {
 }
 
 function pin() {
-  navigator.geolocation.getCurrentPosition(pin2);
+  //navigator.geolocation.getCurrentPosition(pin2);
+  var date = new Date(position.timestamp);
+  var alerttext = "取得時刻:" + date.toLocaleString() + "にゴミ箱のピンをうちました"+"\n";
+  alert(alerttext);
 }
 
-function pin2(position) {
+/*function pin2(position) {
 
   var geo_ido = position.coords.latitude;
   var geo_keido = position.coords.longitude;
@@ -45,4 +48,4 @@ function pin2(position) {
   var alerttext = "取得時刻:" + date.toLocaleString() + "にゴミ箱のピンをうちました"+"\n";
   alert(alerttext);
 
-}
+}*/
