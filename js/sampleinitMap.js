@@ -15,3 +15,34 @@ function initMap() {
       map: map // マーカーを立てる地図を指定
    });
 }
+
+function pin() {
+  navigator.geolocation.getCurrentPosition(pin2);
+}
+
+function pin2(position) {
+
+  var geo_ido = position.coords.latitude;
+  var geo_keido = position.coords.longitude;
+  var date = new Date(position.timestamp);
+
+  var mapArea = document.getElementById('maps');
+    var mapOptions = {
+      center: mapPosition,
+      zoom: 16,
+    };
+  var map = new google.maps.Map(mapArea, mapOptions);
+
+
+  var mapPosition = {lat: geo_ido, lng: geo_keido};
+
+
+  var markerOptions = {
+    map: map,
+    position: mapPosition,
+  };
+  var marker = new google.maps.Marker(markerOptions);
+  var alerttext = "取得時刻:" + date.toLocaleString() + "にゴミ箱のピンをうちました"+"\n";
+  alert(alerttext);
+
+}
