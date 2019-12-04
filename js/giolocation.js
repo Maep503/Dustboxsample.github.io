@@ -39,6 +39,8 @@ function test2(position) {
       position: mapPosition,
     };
     var marker = new google.maps.Marker(markerOptions);
+    var alerttext = "ゴミ箱のピンをうちました" 
+    alert(alerttext);
 
   }
   
