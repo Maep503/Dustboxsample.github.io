@@ -60,7 +60,7 @@ function pin2(position) {
 
 }*/
 
-function pin() {
+function pin(position) {
   navigator.geolocation.getCurrentPosition(test2);
   lat1 =  position.coords.latitude;
   lng1 = position.coords.longitud;
