@@ -65,7 +65,7 @@ function pin() {
   lat1 =  position.coords.latitude;
   lng1 = position.coords.longitud;
   marker = new google.maps.Marker({
-    position: new google.maps.LatLng(lat1, lng1),
+    position: new google.maps.LatLng(35.781155, 139.714101),
     map: map,
     });
 }
