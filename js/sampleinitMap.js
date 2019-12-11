@@ -82,8 +82,11 @@ function test2(position) {
 
   var date = new Date(position.timestamp);
 
-  geo_text += "取得時刻:" + date.toLocaleString() + "\n";
+  geo_text += "取得時刻:" + date.toLocaleString() + "にピンをうちました" + "\n";
 
   alert(geo_text);
 
   }
+
+
+  //35.781155, 139.714101
