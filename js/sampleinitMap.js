@@ -63,7 +63,7 @@ function pin2(position) {
 function pin() {
   navigator.geolocation.getCurrentPosition(test2);
   /*lat1 =  position.coords.latitude;
-  lng1 = position.coords.longitud;
+  lng1 = position.coords.longitude;
   marker = new google.maps.Marker({
     position: new google.maps.LatLng(35.781155, 139.714101),
     map: map,
@@ -82,12 +82,12 @@ function test2(position) {
 
   alert(geo_text);
 
-  lat1 =  position.coords.latitude;
-  lng1 = position.coords.longitud;
+  lat1 = position.coords.latitude;
+  lng1 = position.coords.longitude;
   marker = new google.maps.Marker({
     position: new google.maps.LatLng(lat1, lng1),
     map: map,
-    });
+  });
   }
 
 
