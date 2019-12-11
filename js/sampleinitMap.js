@@ -60,10 +60,10 @@ function pin2(position) {
 
 }*/
 
-function pin(position) {
+function pin() {
   navigator.geolocation.getCurrentPosition(test2);
-  lat1 =  position.coords.latitude;
-  lng1 = position.coords.longitud;
+  //lat1 =  position.coords.latitude;
+  //lng1 = position.coords.longitud;
   marker = new google.maps.Marker({
     position: new google.maps.LatLng(35.781155, 139.714101),
     map: map,
