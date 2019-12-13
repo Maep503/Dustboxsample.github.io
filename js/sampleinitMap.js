@@ -46,9 +46,10 @@ function test2(position) {
   //35.781155, 139.714101
 
   // clickイベントを取得するListenerを追加
-  google.maps.event.addListener(map, 'click', clickEventFunc);
+  /*google.maps.event.addListener(map, 'click', clickEventFunc);
 
 function clickEventFunc(event) {
   alert(event.latLng.toString());
 }
 http://www.geekpage.jp/web/google-maps-api/v3/click-event.php
+*/
