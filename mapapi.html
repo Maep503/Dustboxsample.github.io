@@ -1,34 +1,118 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <style>
-      #maps{ height: 400px; }
-    </style>
-    <script type="text/javascript" src="./js/giolocation.js"></script>
+    <meta charset="utf-8">
+    <title>api sample</title>
   </head>
+
   <body>
-  <div id="maps"></div>
-  <script src=//maps.googleapis.com/maps/api/js?key=AIzaSyDJvd1M99IAgGcrfQ80iOIio0A_zmrKsaE&callback=initMap async></script>
-  <script>
-    function initMap() {
-      var mapPosition = {lat: 35.780840, lng: 139.715757};
-      var mapArea = document.getElementById('maps');
-      var mapOptions = {
-        center: mapPosition,
-        zoom: 16,
+    <div id="header">Googlemapsapi</div>
+    <table>
+      <tr>
+        <td><div id="target"></div></td>
+        <td><div id="sidebar"></div></td>
+      </tr>
+    </table>
+
+    <!-- Google MAP API KEY -->
+    <script src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key=AIzaSyDJvd1M99IAgGcrfQ80iOIio0A_zmrKsaE&callback=initMap" async defer></script>
+
+    <script>
+
+      function initMap() {
+
+        //マップ初期表示の位置設定
+        var target = document.getElementById('target');
+        var center = {
+          lat: 35.780840, // 緯度
+          lng: 139.715757 // 経度
+        };
+
+        //マップ表示
+        map = new google.maps.Map(target, {
+          center: center,
+          zoom: 16,
+        });
+
       };
-      var map = new google.maps.Map(mapArea, mapOptions);
+
+      var markerD = [];
+
+      // DB情報の取得(ajax)
+      $(function(){
+        $.ajax({
+          type: "POST",
+          url: "data.php",
+          dataType: "json",
+          success: function(data){
+            markerD = data;
+            setMarker(markerD);
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown){
+            alert('Error : ' + errorThrown);
+          }
+        });
+      });
+
+      var map;
+      var marker = [];
+      var infoWindow = [];
+
+      function setMarker(markerData) {
+
+        // console.log(markerData);
+        // console.log(markerData.length);
+
+        //マーカー生成
+        var sidebar_html = "";
+        var icon;
+
+        for (var i = 0; i < markerData.length; i++) {
+
+          var latNum = parseFloat(markerData[i]['lat']);
+          var lngNum = parseFloat(markerData[i]['lng']);
+
+          // マーカー位置セット
+          var markerLatLng = new google.maps.LatLng({
+            lat: latNum,
+            lng: lngNum
+          });
+          // マーカーアイコンのセット(行った所はアイコンを変える)
+          if (markerData[i]['status'] === 'went'){
+            icon = new google.maps.MarkerImage('./icon_color/went' + markerData[i]['classNo'] + '.png');
+          } else {
+            icon = new google.maps.MarkerImage('./icon_color/list' + markerData[i]['classNo'] + '.png');
+          }
+          // マーカーのセット
+          marker[i] = new google.maps.Marker({
+            position: markerLatLng,          // マーカーを立てる位置を指定
+            map: map,                        // マーカーを立てる地図を指定
+            icon: icon                       // アイコン指定
+          });
+          // 吹き出しの追加
+          infoWindow[i] = new google.maps.InfoWindow({
+            content: markerData[i]['class'] + '：' + markerData[i]['name'] + '<br><br>' + markerData[i]['text'] + '<br><br>' + markerData[i]['img']
+          });
+          // サイドバー
+          var wantStar;
+          if(markerData[i]['status'] === 'went') {
+            wantStar = '●';
+          } else if(markerData[i]['status'] === 'want') {
+            wantStar = '○';
+          } else {
+            wantStar = '・';
+          }
+          sidebar_html += wantStar + '<a href="javascript:myclick(' + i + ')">' + markerData[i]['name'] + '<\/a><br />';
+          // マーカーにクリックイベントを追加
+          markerEvent(i);
+        }
+
+        // サイドバー
+        document.getElementById("sidebar").innerHTML = sidebar_html;
+      }
 
 
-      var markerOptions = {
-        map: map,
-        position: mapPosition,
-      };
-      var marker = new google.maps.Marker(markerOptions);
+    </script>
 
-    }
-  </script>
-  <button onclick="test()">test</button>
-  <button onclick="pin()">Pin</button>
   </body>
 </html>

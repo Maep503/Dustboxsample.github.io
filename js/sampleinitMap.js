@@ -20,12 +20,6 @@ function initMap() {
 
 function pin() {
   navigator.geolocation.getCurrentPosition(test2);
-  /*lat1 =  position.coords.latitude;
-  lng1 = position.coords.longitude;
-  marker = new google.maps.Marker({
-    position: new google.maps.LatLng(35.781155, 139.714101),
-    map: map,
-    });*/
 }
 
 function test2(position) {
@@ -46,7 +40,16 @@ function test2(position) {
     position: new google.maps.LatLng(lat1, lng1),
     map: map,
   });
+
   }
 
 
   //35.781155, 139.714101
+
+  // clickイベントを取得するListenerを追加
+  google.maps.event.addListener(map, 'click', clickEventFunc);
+
+function clickEventFunc(event) {
+  alert(event.latLng.toString());
+}
+http://www.geekpage.jp/web/google-maps-api/v3/click-event.php
